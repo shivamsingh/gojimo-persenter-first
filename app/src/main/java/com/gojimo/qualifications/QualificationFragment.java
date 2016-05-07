@@ -59,7 +59,12 @@ public class QualificationFragment extends BaseFragment implements Qualification
     }
 
     private QualificationItem qualificationItem() {
-        return QualificationItem_.build(getActivity());
+        QualificationItem qualificationItem = QualificationItem_.build(getActivity());
+        qualificationItem.qualificationSelected().subscribe(this::navigateQualificationDetailScreen);
+        return qualificationItem;
+    }
+
+    private void navigateQualificationDetailScreen(Qualification qualification) {
     }
 
 }

@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GojimoRestClient {
-    public static final String API_URL = "https://api.gojimo.net/api/v4";
+    public static final String API_URL = "https://api.gojimo.net";
     private static GojimoService service;
 
     public static GojimoService service() {
