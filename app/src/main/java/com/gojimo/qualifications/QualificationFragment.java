@@ -34,6 +34,7 @@ public class QualificationFragment extends BaseFragment implements Qualification
 
     @AfterViews
     void init() {
+        swipeRefresh.setColorSchemeResources(R.color.primary_dark);
         swipeRefresh.setOnRefreshListener(this::loadQualifications);
         qualifications.addItemDecoration(new DividerItemDecoration(getActivity()));
         qualifications.setLayoutManager(new LinearLayoutManager(this.getActivity()));
@@ -70,7 +71,7 @@ public class QualificationFragment extends BaseFragment implements Qualification
 
     private void navigateQualificationDetailScreen(Qualification qualification) {
         QualificationDetailActivity_.intent(getActivity())
-                .qualificationId(qualification.getId())
+                .qualification(qualification)
                 .start();
     }
 

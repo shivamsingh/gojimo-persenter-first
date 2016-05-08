@@ -1,34 +1,54 @@
 package com.gojimo.qualificationdetail;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import com.gojimo.BaseFragment;
+import com.gojimo.CustomRecyclerAdapter;
+import com.gojimo.DividerItemDecoration;
 import com.gojimo.R;
 import com.gojimo.entity.Qualification;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
-
-import rx.Observable;
-import rx.subjects.PublishSubject;
+import org.androidannotations.annotations.ViewById;
 
 @EFragment(R.layout.qualification_detail)
-public class QualificationDetailFragment extends BaseFragment implements QualificationDetailView {
-    private PublishSubject<String> initialization = PublishSubject.create();
-
+public class QualificationDetailFragment extends BaseFragment {
     @FragmentArg
-    String qualificationId;
+    Qualification qualification;
+
+    @ViewById(R.id.qualification_details)
+    RecyclerView qualificationDetails;
+
+    CustomRecyclerAdapter qualificationDetailAdapter;
 
     @AfterViews
     void init() {
-        initialization.onNext(qualificationId);
+        qualificationDetails.addItemDecoration(new DividerItemDecoration(getActivity()));
+        qualificationDetails.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        showQualification(qualification);
     }
 
-    @Override
-    public Observable<String> initialized() {
-        return bindObservable(initialization.asObservable());
+    private void showQualification(Qualification qualification) {
+        if (!qualification.getSubjects().isEmpty())
+            qualificationDetailAdapter = new CustomRecyclerAdapter(qualification.getSubjects(), this::qualificationSubjectItem);
+        else if (!qualification.getProducts().isEmpty())
+            qualificationDetailAdapter = new CustomRecyclerAdapter(qualification.getProducts(), this::qualificationProductItem);
+        else
+            showNoQualificationDetail();
+        qualificationDetails.setAdapter(qualificationDetailAdapter);
     }
 
-    @Override
-    public void showQualification(Qualification qualification) {
+    private void showNoQualificationDetail() {
+    }
+
+    private QualificationSubjectItem qualificationSubjectItem() {
+        return QualificationSubjectItem_.build(getActivity());
+    }
+
+    private QualificationProductItem qualificationProductItem() {
+        return QualificationProductItem_.build(getActivity());
     }
 }
