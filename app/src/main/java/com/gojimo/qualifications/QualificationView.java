@@ -1,6 +1,7 @@
 package com.gojimo.qualifications;
 
 import com.gojimo.BaseView;
+import com.gojimo.entity.Qualification;
 
 import java.util.List;
 

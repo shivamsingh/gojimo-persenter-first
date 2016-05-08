@@ -1,11 +1,13 @@
 package com.gojimo.qualifications;
 
 import android.content.Context;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.gojimo.BaseListItemView;
 import com.gojimo.R;
+import com.gojimo.entity.Qualification;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
@@ -15,11 +17,20 @@ import rx.Observable;
 import rx.subjects.PublishSubject;
 
 @EViewGroup(R.layout.qualification_item)
-public class QualificationItem extends LinearLayout implements BaseListItemView<Qualification> {
+public class QualificationItem extends RelativeLayout implements BaseListItemView<Qualification> {
     private PublishSubject<Qualification> qualificationSelection = PublishSubject.create();
 
-    @ViewById(R.id.title)
-    protected TextView title;
+    @ViewById(R.id.name)
+    protected TextView name;
+
+    @ViewById(R.id.country)
+    protected TextView country;
+
+    @ViewById(R.id.total_subject)
+    protected TextView totalSubjects;
+
+    @ViewById(R.id.total_products)
+    protected TextView totalProducts;
 
     private Qualification qualification;
 
@@ -39,6 +50,20 @@ public class QualificationItem extends LinearLayout implements BaseListItemView<
     @Override
     public void bind(Qualification item) {
         qualification = item;
-        title.setText(item.getName());
+        resetItem();
+
+        name.setText(item.getName());
+        if (qualification.getCountry() != null)
+            country.setText(qualification.getCountry().getName());
+        if (!qualification.getSubjects().isEmpty())
+            totalSubjects.setText(qualification.getSubjects().size() + " Subject");
+        if (!qualification.getProducts().isEmpty())
+            totalProducts.setText(qualification.getProducts().size() + " Product");
+    }
+
+    private void resetItem() {
+        country.setText("");
+        totalSubjects.setText("");
+        totalProducts.setText("");
     }
 }

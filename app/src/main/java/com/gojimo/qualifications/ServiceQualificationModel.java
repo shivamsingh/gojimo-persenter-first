@@ -1,5 +1,6 @@
 package com.gojimo.qualifications;
 
+import com.gojimo.entity.Qualification;
 import com.gojimo.network.GojimoService;
 
 import java.util.List;

@@ -1,5 +1,7 @@
 package com.gojimo.qualifications;
 
+import com.gojimo.entity.Qualification;
+
 import java.util.List;
 
 import rx.Observable;

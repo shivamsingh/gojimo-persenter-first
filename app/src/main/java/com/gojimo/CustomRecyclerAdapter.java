@@ -4,8 +4,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gojimo.qualifications.Qualification;
-
 import java.util.List;
 
 public class CustomRecyclerAdapter<T, V extends View & BaseListItemView<T>> extends

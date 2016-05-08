@@ -50,6 +50,7 @@ public class BaseFragment extends Fragment {
     }
 
     public void error(final Throwable throwable) {
+        throwable.printStackTrace();
         new Handler(Looper.getMainLooper()).post(() -> genericError(throwable));
     }
 
@@ -77,6 +78,14 @@ public class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        hideLoader();
+        dismissLoader();
+    }
+
+    private void dismissLoader() {
+        try {
+            asyncLoader.dismiss();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }

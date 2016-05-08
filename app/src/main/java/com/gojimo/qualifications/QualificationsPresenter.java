@@ -1,17 +1,13 @@
 package com.gojimo.qualifications;
 
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 public class QualificationsPresenter {
-    private QualificationModel model;
-    private QualificationView view;
-
     public QualificationsPresenter(QualificationModel model, QualificationView view) {
-        this.model = model;
-        this.view = view;
-        registerEvents();
-    }
-
-    private void registerEvents() {
-        view.whenLoadQualifications().subscribe(ignored -> model.qualifications().
-                subscribe(view::showQualifications, view::error));
+        view.whenLoadQualifications().subscribe(ignored -> model.qualifications()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(view::showQualifications, view::error));
     }
 }

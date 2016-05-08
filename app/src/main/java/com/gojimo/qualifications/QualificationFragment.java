@@ -1,16 +1,17 @@
 package com.gojimo.qualifications;
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.gojimo.BaseFragment;
 import com.gojimo.CustomRecyclerAdapter;
 import com.gojimo.DividerItemDecoration;
 import com.gojimo.R;
+import com.gojimo.entity.Qualification;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
@@ -34,6 +35,8 @@ public class QualificationFragment extends BaseFragment implements Qualification
     void init() {
         swipeRefresh.setOnRefreshListener(this::loadQualifications);
         qualifications.addItemDecoration(new DividerItemDecoration(getActivity()));
+        qualifications.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        showLoader();
         loadQualifications();
     }
 
@@ -46,9 +49,9 @@ public class QualificationFragment extends BaseFragment implements Qualification
         return bindObservable(loadQualifications.asObservable());
     }
 
-    @UiThread
     @Override
     public void showQualifications(List<Qualification> qualificationList) {
+        hideLoader();
         swipeRefresh.setRefreshing(false);
 
         if (qualificationAdapter == null) {
