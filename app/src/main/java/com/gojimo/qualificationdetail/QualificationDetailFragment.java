@@ -27,7 +27,6 @@ public class QualificationDetailFragment extends BaseFragment {
     @AfterViews
     void init() {
         qualificationDetails.addItemDecoration(new DividerItemDecoration(getActivity()));
-        qualificationDetails.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         showQualification(qualification);
     }
 

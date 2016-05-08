@@ -37,7 +37,6 @@ public class QualificationFragment extends BaseFragment implements Qualification
         swipeRefresh.setColorSchemeResources(R.color.primary_dark);
         swipeRefresh.setOnRefreshListener(this::loadQualifications);
         qualifications.addItemDecoration(new DividerItemDecoration(getActivity()));
-        qualifications.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         showLoader();
         loadQualifications();
     }

@@ -28,6 +28,9 @@ public class QualificationSubjectItem extends RelativeLayout implements BaseList
     @Override
     public void bind(Subject subject) {
         title.setText(subject.getTitle());
-        indicator.setBackgroundColor(Color.parseColor(subject.getColour()));
+        if (subject.getColour() != null && !subject.getColour().equalsIgnoreCase(""))
+            indicator.setBackgroundColor(Color.parseColor(subject.getColour()));
+        else
+            indicator.setBackgroundColor(Color.WHITE);
     }
 }
