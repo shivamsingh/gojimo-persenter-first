@@ -1,7 +1,6 @@
 package com.gojimo.qualifications;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -56,9 +55,9 @@ public class QualificationItem extends RelativeLayout implements BaseListItemVie
         if (qualification.getCountry() != null)
             country.setText(qualification.getCountry().getName());
         if (!qualification.getSubjects().isEmpty())
-            totalSubjects.setText(qualification.getSubjects().size() + " Subject");
+            totalSubjects.setText(qualification.getSubjects().size() + " Subjects");
         if (!qualification.getProducts().isEmpty())
-            totalProducts.setText(qualification.getProducts().size() + " Product");
+            totalProducts.setText(qualification.getProducts().size() + " Products");
     }
 
     private void resetItem() {

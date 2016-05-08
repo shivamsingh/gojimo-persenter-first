@@ -18,4 +18,9 @@ public class ServiceQualificationModel implements QualificationModel {
     public Observable<List<Qualification>> qualifications() {
         return service.qualifications();
     }
+
+    @Override
+    public Observable<Qualification> qualification(String qualificationId) {
+        return service.qualification(qualificationId);
+    }
 }

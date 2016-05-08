@@ -9,6 +9,7 @@ import com.gojimo.CustomRecyclerAdapter;
 import com.gojimo.DividerItemDecoration;
 import com.gojimo.R;
 import com.gojimo.entity.Qualification;
+import com.gojimo.qualificationdetail.QualificationDetailActivity_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
@@ -68,6 +69,9 @@ public class QualificationFragment extends BaseFragment implements Qualification
     }
 
     private void navigateQualificationDetailScreen(Qualification qualification) {
+        QualificationDetailActivity_.intent(getActivity())
+                .qualificationId(qualification.getId())
+                .start();
     }
 
 }
