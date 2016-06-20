@@ -2,10 +2,8 @@ package com.gojimo.qualifications;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import com.gojimo.Fragments;
 import com.gojimo.R;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;

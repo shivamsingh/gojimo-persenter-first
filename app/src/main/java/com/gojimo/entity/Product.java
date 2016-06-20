@@ -2,10 +2,18 @@ package com.gojimo.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-
 import java.util.List;
 
 public class Product implements Parcelable {
+    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
+        @Override public Product createFromParcel(Parcel source) {
+            return new Product(source);
+        }
+
+        @Override public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
     private String id;
     private String title;
     private String link;
@@ -13,6 +21,19 @@ public class Product implements Parcelable {
     private List<Asset> assets;
     private Publisher publisher;
     private String author;
+
+    public Product() {
+    }
+
+    protected Product(Parcel in) {
+        this.id = in.readString();
+        this.title = in.readString();
+        this.link = in.readString();
+        this.type = in.readString();
+        this.assets = in.createTypedArrayList(Asset.CREATOR);
+        this.publisher = in.readParcelable(Publisher.class.getClassLoader());
+        this.author = in.readString();
+    }
 
     public String getId() {
         return id;
@@ -85,29 +106,4 @@ public class Product implements Parcelable {
         dest.writeParcelable(this.publisher, flags);
         dest.writeString(this.author);
     }
-
-    public Product() {
-    }
-
-    protected Product(Parcel in) {
-        this.id = in.readString();
-        this.title = in.readString();
-        this.link = in.readString();
-        this.type = in.readString();
-        this.assets = in.createTypedArrayList(Asset.CREATOR);
-        this.publisher = in.readParcelable(Publisher.class.getClassLoader());
-        this.author = in.readString();
-    }
-
-    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
-        @Override
-        public Product createFromParcel(Parcel source) {
-            return new Product(source);
-        }
-
-        @Override
-        public Product[] newArray(int size) {
-            return new Product[size];
-        }
-    };
 }

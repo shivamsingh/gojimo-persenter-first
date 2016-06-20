@@ -1,22 +1,17 @@
 package com.gojimo.qualifications;
 
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import com.gojimo.BaseFragment;
 import com.gojimo.CustomRecyclerAdapter;
 import com.gojimo.DividerItemDecoration;
 import com.gojimo.R;
 import com.gojimo.entity.Qualification;
 import com.gojimo.qualificationdetail.QualificationDetailActivity_;
-
+import java.util.List;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
-
-import java.util.List;
-
 import rx.Observable;
 import rx.subjects.PublishSubject;
 
@@ -62,7 +57,11 @@ public class QualificationFragment extends BaseFragment implements Qualification
             qualificationAdapter.setItems(qualificationList);
     }
 
-    private QualificationItem qualificationItem() {
+    private QualificationItem qualificationItem(int position) {
+        if (position == qualificationAdapter.getItemCount()) {
+
+        }
+
         QualificationItem qualificationItem = QualificationItem_.build(getActivity());
         qualificationItem.qualificationSelected().subscribe(this::navigateQualificationDetailScreen);
         return qualificationItem;

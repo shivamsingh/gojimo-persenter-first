@@ -1,14 +1,11 @@
 package com.gojimo.qualificationdetail;
 
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import com.gojimo.BaseFragment;
 import com.gojimo.CustomRecyclerAdapter;
 import com.gojimo.DividerItemDecoration;
 import com.gojimo.R;
 import com.gojimo.entity.Qualification;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;

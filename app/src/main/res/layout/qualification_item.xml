@@ -19,8 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/name"
         android:layout_marginTop="8dp"
+        android:textColor="@color/secondary_text"
         android:textSize="13sp"
-        android:textColor="@color/secondary_text" />
+        />
 
     <TextView
         android:id="@+id/total_subject"
@@ -28,8 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/country"
+        android:textColor="@color/secondary_text"
         android:textSize="13sp"
-        android:textColor="@color/secondary_text" />
+        />
 
     <TextView
         android:id="@+id/total_products"
@@ -37,6 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/country"
+        android:textColor="@color/secondary_text"
         android:textSize="13sp"
-        android:textColor="@color/secondary_text" />
+        />
 </RelativeLayout>

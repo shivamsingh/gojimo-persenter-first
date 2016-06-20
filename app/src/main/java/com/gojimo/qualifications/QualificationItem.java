@@ -3,34 +3,26 @@ package com.gojimo.qualifications;
 import android.content.Context;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.gojimo.BaseListItemView;
 import com.gojimo.R;
 import com.gojimo.entity.Qualification;
-
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
-
 import rx.Observable;
 import rx.subjects.PublishSubject;
 
 @EViewGroup(R.layout.qualification_item)
 public class QualificationItem extends RelativeLayout implements BaseListItemView<Qualification> {
-    private PublishSubject<Qualification> qualificationSelection = PublishSubject.create();
-
     @ViewById(R.id.name)
     protected TextView name;
-
     @ViewById(R.id.country)
     protected TextView country;
-
     @ViewById(R.id.total_subject)
     protected TextView totalSubjects;
-
     @ViewById(R.id.total_products)
     protected TextView totalProducts;
-
+    private PublishSubject<Qualification> qualificationSelection = PublishSubject.create();
     private Qualification qualification;
 
     public QualificationItem(Context context) {

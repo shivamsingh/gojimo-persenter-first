@@ -5,12 +5,10 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
-
 import java.io.IOException;
-
 import rx.Observable;
-import rx.subjects.PublishSubject;
 import rx.android.app.AppObservable;
+import rx.subjects.PublishSubject;
 
 public class BaseFragment extends Fragment {
     PublishSubject<Void> detached = PublishSubject.create();

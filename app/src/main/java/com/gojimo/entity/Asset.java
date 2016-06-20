@@ -4,10 +4,29 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Asset implements Parcelable {
+    public static final Parcelable.Creator<Asset> CREATOR = new Parcelable.Creator<Asset>() {
+        @Override public Asset createFromParcel(Parcel source) {
+            return new Asset(source);
+        }
+
+        @Override public Asset[] newArray(int size) {
+            return new Asset[size];
+        }
+    };
     private String id;
     private String contentType;
     private String path;
     private String link;
+
+    public Asset() {
+    }
+
+    protected Asset(Parcel in) {
+        this.id = in.readString();
+        this.contentType = in.readString();
+        this.path = in.readString();
+        this.link = in.readString();
+    }
 
     public String getId() {
         return id;
@@ -41,7 +60,6 @@ public class Asset implements Parcelable {
         this.link = link;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -54,26 +72,4 @@ public class Asset implements Parcelable {
         dest.writeString(this.path);
         dest.writeString(this.link);
     }
-
-    public Asset() {
-    }
-
-    protected Asset(Parcel in) {
-        this.id = in.readString();
-        this.contentType = in.readString();
-        this.path = in.readString();
-        this.link = in.readString();
-    }
-
-    public static final Parcelable.Creator<Asset> CREATOR = new Parcelable.Creator<Asset>() {
-        @Override
-        public Asset createFromParcel(Parcel source) {
-            return new Asset(source);
-        }
-
-        @Override
-        public Asset[] newArray(int size) {
-            return new Asset[size];
-        }
-    };
 }

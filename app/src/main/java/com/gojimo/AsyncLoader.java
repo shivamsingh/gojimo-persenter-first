@@ -2,12 +2,9 @@ package com.gojimo;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.drawable.AnimationDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class AsyncLoader extends Dialog {
@@ -17,15 +14,6 @@ public class AsyncLoader extends Dialog {
 
     public AsyncLoader(Context context, int theme) {
         super(context, theme);
-    }
-
-    public void setMessage(CharSequence message) {
-        if (message != null && message.length() > 0) {
-            findViewById(R.id.message).setVisibility(View.VISIBLE);
-            TextView txt = (TextView) findViewById(R.id.message);
-            txt.setText(message);
-            txt.invalidate();
-        }
     }
 
     public static AsyncLoader show(Context context) {
@@ -63,6 +51,15 @@ public class AsyncLoader extends Dialog {
         lp.dimAmount = 0.2f;
         dialog.getWindow().setAttributes(lp);
         return dialog;
+    }
+
+    public void setMessage(CharSequence message) {
+        if (message != null && message.length() > 0) {
+            findViewById(R.id.message).setVisibility(View.VISIBLE);
+            TextView txt = (TextView) findViewById(R.id.message);
+            txt.setText(message);
+            txt.invalidate();
+        }
     }
 
 }

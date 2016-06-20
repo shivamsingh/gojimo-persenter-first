@@ -7,8 +7,6 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.gojimo.qualifications.QualificationFragment;
-
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private Drawable divider;
 

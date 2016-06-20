@@ -3,11 +3,9 @@ package com.gojimo.qualificationdetail;
 import android.content.Context;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.gojimo.BaseListItemView;
 import com.gojimo.R;
 import com.gojimo.entity.Product;
-
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
