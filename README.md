@@ -1,1 +1,1 @@
-# gojimo-persenter-first
+# persenter-first architecture example.
